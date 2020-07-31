@@ -47,7 +47,7 @@ You'll need to have the following libs installed on your system to compile dmrsh
 Instructions on compiling and installing:
 
 ```
-git clone https://github.com/nonoo/dmrshark.git
+git clone --recursive https://github.com/nonoo/dmrshark.git
 cd dmrshark/
 mkdir build
 cd build/

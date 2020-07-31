@@ -7,4 +7,5 @@ add_subdirectory(daemon)
 add_subdirectory(dmrpacket)
 add_subdirectory(remotedb)
 add_subdirectory(voicestreams)
+add_subdirectory(mbelib)
 

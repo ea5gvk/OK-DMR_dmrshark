@@ -11,3 +11,4 @@ pkg_check_modules(WEBSOCKETS REQUIRED libwebsockets)
 
 add_subdirectory(libs)
 add_subdirectory(dmrshark)
+add_subdirectory(tests)
