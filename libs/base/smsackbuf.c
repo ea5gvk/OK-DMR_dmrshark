@@ -20,7 +20,7 @@
 // message to the SMS retransmit buffer, otherwise it updloads it to
 // the remote database log.
 
-#include DEFAULTCONFIG
+
 
 #include "smsackbuf.h"
 #include "smsrtbuf.h"

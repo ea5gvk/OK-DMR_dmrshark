@@ -18,7 +18,7 @@
 #ifndef CONFIG_H_
 #define CONFIG_H_
 
-#include <glib.h>
+#include <glib-2.0/glib.h>
 
 #include <libs/base/types.h>
 #include <libs/daemon/console.h>

@@ -7,3 +7,7 @@ Makefile.config.inc
 *.log.*
 *.cfg
 *.pid
+CMakeFiles
+/build
+/.idea
+cmake-build-debug

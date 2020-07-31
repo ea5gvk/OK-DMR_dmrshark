@@ -15,7 +15,7 @@
  * along with dmrshark.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#include DEFAULTCONFIG
+
 
 #include <libs/base/base.h>
 #include <libs/base/log.h>
@@ -42,7 +42,7 @@ static char *dmrshark_directory = NULL;
 
 static void dmrshark_printversion(void) {
 	console_log(APPNAME " by ha2non v%u.%u.%u ", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH);
-	console_log(__TIME__ " " __DATE__ " " GITHASH "\n");
+	console_log(__TIME__ " " __DATE__ "\n");
 }
 
 static void dmrshark_processcommandline(int argc, char **argv) {

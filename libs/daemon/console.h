@@ -19,6 +19,7 @@
 #define CONSOLE_H_
 
 #include <libs/base/types.h>
+#include <libs/base/command.h>
 
 #include <stdarg.h>
 

@@ -19,7 +19,7 @@
 // fails. It's a FIFO, and only one (the first) element is tried to be
 // sent at a time.
 
-#include DEFAULTCONFIG
+
 
 #include "smstxbuf.h"
 #include "dmr-data.h"

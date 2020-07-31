@@ -18,7 +18,7 @@
 #ifndef TYPES_H_
 #define TYPES_H_
 
-#include <config/defaults.h>
+#include <dmrshark/defaults.h>
 
 #include <stdint.h>
 

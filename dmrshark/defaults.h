@@ -7,6 +7,6 @@
 
 #include "appids.h"
 // Including the app specific configuration file
-#include APPCONFIGFILE
+#include "dmrshark.h"
 
 #endif /* ifdef DEFAULTS_H_ */

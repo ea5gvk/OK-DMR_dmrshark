@@ -15,7 +15,7 @@
  * along with dmrshark.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#include DEFAULTCONFIG
+
 
 #include "base.h"
 #include "smstxbuf.h"

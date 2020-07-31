@@ -1,0 +1,10 @@
+add_subdirectory(config)
+add_subdirectory(aprs)
+add_subdirectory(base)
+add_subdirectory(coding)
+add_subdirectory(comm)
+add_subdirectory(daemon)
+add_subdirectory(dmrpacket)
+add_subdirectory(remotedb)
+add_subdirectory(voicestreams)
+

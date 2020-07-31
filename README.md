@@ -1,5 +1,6 @@
 # dmrshark
 
+
 dmrshark analyses the traffic, and adds extra features to a Hytera IPSC network.
 
 **NOTE: this project is no longer maintained. Please do not ask for support.**
@@ -47,8 +48,11 @@ Instructions on compiling and installing:
 
 ```
 git clone https://github.com/nonoo/dmrshark.git
-cd dmrshark/build/dmrshark
-make
+cd dmrshark/
+mkdir build
+cd build/
+cmake ..
+make -j
 make install
 ```
 

@@ -17,7 +17,7 @@
 
 // This SMS retransmit buffer takes care of retransmitting unacked SMSes.
 
-#include DEFAULTCONFIG
+
 
 #include "smsrtbuf.h"
 #include "smstxbuf.h"

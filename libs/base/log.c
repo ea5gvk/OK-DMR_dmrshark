@@ -15,13 +15,13 @@
  * along with dmrshark.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#include DEFAULTCONFIG
+
 
 #include "log.h"
 
 void log_ver(void) {
 	console_log("ver: v%u.%u.%u", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH);
-	console_log(" " __TIME__ " " __DATE__ " " GITHASH "\n");
+	console_log(" " __TIME__ " " __DATE__ "\n");
 }
 
 void log_loglevel(loglevel_t *loglevel) {
