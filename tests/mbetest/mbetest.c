@@ -70,7 +70,7 @@ static void base_bytestobits(uint8_t *bytes, uint16_t bytes_length, flag_t *bits
 static void processagc(float *outbuf, float *aout_gain) {
 	int i, n;
 	float aout_abs, max, gainfactor, gaindelta, maxbuf;
-	static aout_max_buf[33];
+	static float aout_max_buf[33];
 	static uint8_t aout_max_buf_idx;
 
 	// Detect max. level
@@ -135,7 +135,7 @@ int main(void) {
 	fout = fopen("out.raw", "w");
 	while (!feof(fin)) {
 		bytesread = fread(ambe_fr_bytes, 1, sizeof(ambe_fr_bytes), fin);
-		printf("read %2u bytes: ", bytesread);
+		printf("read %zu bytes: ", bytesread);
 		for (i = 0; i < bytesread; i++)
 			printf("%.2x", ambe_fr_bytes[i]);
 		printf("\n");

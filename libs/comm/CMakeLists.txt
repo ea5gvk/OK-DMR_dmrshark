@@ -8,5 +8,5 @@ add_library(dmrshark-comm ${headers} ${sources})
 
 find_library(NETSNMP "netsnmp")
 
-target_include_directories(dmrshark-comm PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories(dmrshark-comm PUBLIC ${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 target_link_libraries(dmrshark-comm LINK_PUBLIC pcap ${NETSNMP} websockets)

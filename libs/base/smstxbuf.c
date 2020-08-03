@@ -34,6 +34,7 @@
 #include <libs/remotedb/userdb.h>
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <pthread.h>
 
@@ -198,7 +199,7 @@ void smstxbuf_first_entry_sent_successfully(repeater_t *repeater) {
 
 static void smstxbuf_first_entry_send_unsuccessful(void) {
 	smsrtbuf_t *smsrtbuf_entry;
-	int db_id;
+	unsigned int db_id;
 
 	pthread_mutex_lock(&smstxbuf_mutex);
 	if (smstxbuf_first_entry == NULL) {

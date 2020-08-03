@@ -24,7 +24,7 @@ dmr_data_gpspos_t *dmr_data_decode_hytera_gps_triggered(uint8_t *message_data, u
 	char *endptr;
 
 	if (message_data_length < 60 || message_data == NULL)
-		return ;
+		return NULL;
 
 	// Latitude
 	result.latitude_ch = message_data[28];

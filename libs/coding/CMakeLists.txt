@@ -6,4 +6,4 @@ file(GLOB sources *.c)
 
 add_library(dmrshark-coding ${headers} ${sources})
 
-target_include_directories(dmrshark-coding PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories(dmrshark-coding PUBLIC ${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})

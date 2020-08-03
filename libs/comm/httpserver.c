@@ -81,7 +81,7 @@ static uint16_t httpserver_sendtoclient(httpserver_client_t *client, uint8_t *bu
 	return bytestowritetobuf;
 }
 
-static char *httpserver_get_client_host_or_ip(struct lws_context *context, struct lws *wsi) {
+static char *httpserver_get_client_host_or_ip(struct lws *wsi) {
 	static char clienthost[100];
 	static char clientip[INET6_ADDRSTRLEN];
 	int fd;
@@ -109,7 +109,7 @@ static uint16_t httpserver_calc_datatosendsize(struct lws *wsi, httpserver_clien
 	return datatosendsize;
 }
 
-static int httpserver_http_callback(struct lws_context *context, struct lws *wsi,
+static int httpserver_http_callback(struct lws *wsi,
 	enum lws_callback_reasons reason, void *user, void *in, size_t len)
 {
 	struct lws_pollargs *pa = (struct lws_pollargs *)in;
@@ -122,7 +122,7 @@ static int httpserver_http_callback(struct lws_context *context, struct lws *wsi
 	char *tok;
 	char *clienthost;
 
-	if (context == NULL || wsi == NULL)
+	if (wsi == NULL)
 		return -1;
 
 	switch (reason) {
@@ -221,7 +221,7 @@ static int httpserver_http_callback(struct lws_context *context, struct lws *wsi
 			break;
 
 		case LWS_CALLBACK_SERVER_NEW_CLIENT_INSTANTIATED:
-			clienthost = httpserver_get_client_host_or_ip(context, wsi);
+			clienthost = httpserver_get_client_host_or_ip(wsi);
 			console_log(LOGLEVEL_HTTPSERVER "httpserver [%s]: adding new client\n", clienthost);
 			httpserver_client = (httpserver_client_t *)calloc(1, sizeof(httpserver_client_t));
 			if (!httpserver_client) {
@@ -229,7 +229,6 @@ static int httpserver_http_callback(struct lws_context *context, struct lws *wsi
 				return -1;
 			}
 			strncpy(httpserver_client->host, clienthost, sizeof(httpserver_client->host));
-			httpserver_client->context = context;
 			httpserver_client->wsi = wsi;
 			if (httpserver_clients == NULL)
 				httpserver_clients = httpserver_client;
@@ -295,7 +294,7 @@ static void httpserver_wesockets_parse_command_line(httpserver_client_t *httpser
 }
 
 // This function handles websocket voicestream callbacks.
-static int httpserver_websockets_voicestream_callback(struct lws_context *context, struct lws *wsi,
+static int httpserver_websockets_voicestream_callback(struct lws *wsi,
 	enum lws_callback_reasons reason, void *user, void *in, size_t len)
 {
 	uint8_t txbuf_padded[LWS_SEND_BUFFER_PRE_PADDING + HTTPSERVER_LWS_TXBUFFER_SIZE + LWS_SEND_BUFFER_POST_PADDING];
@@ -306,7 +305,7 @@ static int httpserver_websockets_voicestream_callback(struct lws_context *contex
 	char *linetok = NULL;
 	char *linetok_saveptr = NULL;
 
-	if (context == NULL || wsi == NULL)
+	if (wsi == NULL)
 		return -1;
 
 	switch (reason) {
@@ -315,7 +314,7 @@ static int httpserver_websockets_voicestream_callback(struct lws_context *contex
 			if (httpserver_client == NULL)
 				return -1;
 			httpserver_client->is_on_websockets = 1;
-			strncpy(httpserver_client->host, httpserver_get_client_host_or_ip(context, wsi), sizeof(httpserver_client->host));
+			strncpy(httpserver_client->host, httpserver_get_client_host_or_ip(wsi), sizeof(httpserver_client->host));
 			console_log(LOGLEVEL_HTTPSERVER "httpserver [%s]: websocket client connected\n", httpserver_client->host);
 			break;
 
