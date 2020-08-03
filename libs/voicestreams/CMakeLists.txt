@@ -7,4 +7,4 @@ file(GLOB sources *.c)
 add_library(dmrshark-voicestreams ${headers} ${sources})
 
 target_include_directories(dmrshark-voicestreams PUBLIC ${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
-target_link_libraries(dmrshark-voicestreams PUBLIC mbe)
+target_link_libraries(dmrshark-voicestreams PUBLIC mbe mp3lame)

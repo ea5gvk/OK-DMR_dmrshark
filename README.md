@@ -51,8 +51,8 @@ git clone --recursive https://github.com/nonoo/dmrshark.git
 cd dmrshark/
 mkdir build
 cd build/
-cmake .. -DAMBEDECODEVOICE=0 -DMP3ENCODEVOICE=0
-# if you want to, change the AMBEDECODEVOICE/MP3ENCODEVOICE to =1
+cmake .. -DAMBEDECODEVOICE=1 -DMP3ENCODEVOICE=1
+# if you want to exclude mbelib/libmp3lame capabilities, change the AMBEDECODEVOICE/MP3ENCODEVOICE to =0
 make -j
 make install
 ```

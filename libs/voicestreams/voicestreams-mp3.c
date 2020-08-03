@@ -16,13 +16,13 @@
 **/
 
 
+#include "dmrshark/defaults.h"
 
 #if defined(AMBEDECODEVOICE) && defined(MP3ENCODEVOICE)
 
 #include "voicestreams-mp3.h"
 
 #include <libs/daemon/console.h>
-
 #include <string.h>
 
 static void voicestreams_mp3_handleerror(int resultcode) {

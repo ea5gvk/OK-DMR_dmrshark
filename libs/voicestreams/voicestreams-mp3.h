@@ -18,7 +18,11 @@
 #ifndef VOICESTREAMS_MP3_H_
 #define VOICESTREAMS_MP3_H_
 
+#include "dmrshark/defaults.h"
+
 #ifdef MP3ENCODEVOICE
+
+#include <lame/lame.h>
 
 #include "voicestreams.h"
 #include "voicestreams-decode.h"
