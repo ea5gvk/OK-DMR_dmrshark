@@ -51,28 +51,13 @@ git clone --recursive https://github.com/nonoo/dmrshark.git
 cd dmrshark/
 mkdir build
 cd build/
-cmake ..
+cmake .. -DAMBEDECODEVOICE=0 -DMP3ENCODEVOICE=0
+# if you want to, change the AMBEDECODEVOICE/MP3ENCODEVOICE to =1
 make -j
 make install
 ```
 
 Now you will have dmrshark installed to **/opt/dmrshark**.
-
-### libmbe
-
-If you don't want to use libmbe, create **Makefile.config.inc** in the dmrshark source root directory, and add the following:
-
-```
-AMBEDECODEVOICE := 0
-```
-
-### libmp3lame
-
-If you don't want to use libmp3lame, create **Makefile.config.inc** in the dmrshark source root directory, and add the following:
-
-```
-MP3ENCODEVOICE := 0
-```
 
 ## Configuration
 
