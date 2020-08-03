@@ -225,10 +225,9 @@ char *config_get_netdevicename(void) {
 	GError *error = NULL;
 	char *value = NULL;
 	char *key = "netdevicename";
-	char *defaultvalue = NULL;
+	char *defaultvalue = "any";
 
 	pthread_mutex_lock(&config_mutex);
-	defaultvalue = "any";
 	value = g_key_file_get_string(keyfile, CONFIG_MAIN_SECTION_NAME, key, &error);
 	if (error || value == NULL) {
 		value = strdup(defaultvalue);
@@ -239,14 +238,30 @@ char *config_get_netdevicename(void) {
 	return value;
 }
 
+char *config_get_netdevicefilter(void) {
+    GError *error = NULL;
+    char *value = NULL;
+    char *key = "netdevicefilter";
+    char *defaultvalue = "ip and udp";
+
+    pthread_mutex_lock(&config_mutex);
+    value = g_key_file_get_string(keyfile, CONFIG_MAIN_SECTION_NAME, key, &error);
+    if (error || value == NULL) {
+        value = strdup(defaultvalue);
+        if (value)
+            g_key_file_set_string(keyfile, CONFIG_MAIN_SECTION_NAME, key, value);
+    }
+    pthread_mutex_unlock(&config_mutex);
+    return value;
+}
+
 int config_get_repeaterinfoupdateinsec(void) {
 	GError *error = NULL;
 	int value = 0;
 	char *key = "repeaterinfoupdateinsec";
-	int defaultvalue;
+	int defaultvalue = 300;
 
 	pthread_mutex_lock(&config_mutex);
-	defaultvalue = 300;
 	value = g_key_file_get_integer(keyfile, CONFIG_MAIN_SECTION_NAME, key, &error);
 	if (error) {
 		value = defaultvalue;
@@ -897,9 +912,9 @@ void config_init(char *configfilename) {
 	// We read everything, a default value will be set for non-existent keys in the config file.
 	config_get_loglevel();
 	tmp_str = config_get_logfilename();
-	free(tmp_str);
+	free(tmp_str); tmp_str = NULL;
 	tmp_str = config_get_pidfilename();
-	free(tmp_str);
+	free(tmp_str); tmp_str = NULL;
 	tmp_str = config_get_daemonctlfile();
 	free(tmp_str);
 	tmp_str = config_get_ttyconsoledev();
@@ -907,6 +922,8 @@ void config_init(char *configfilename) {
 	config_get_ttyconsoleenabled();
 	config_get_ttyconsolebaudrate();
 	tmp_str = config_get_netdevicename();
+	free(tmp_str);
+	tmp_str = config_get_netdevicefilter();
 	free(tmp_str);
 	config_get_repeaterinfoupdateinsec();
 	config_get_repeaterinactivetimeoutinsec();

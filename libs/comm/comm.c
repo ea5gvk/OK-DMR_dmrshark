@@ -98,8 +98,8 @@ char *comm_get_our_ipaddr(void) {
 	char *netdevname = NULL;
 	struct ifaddrs *ifaddr = NULL;
 	struct ifaddrs *ifa = NULL;
-	int i = 0;
-	int res = 0;
+	int i;
+	int res;
 	static char dev_ipaddr[NI_MAXHOST] = {0,};
 
 	// Finding out the IP addresses associated with the network interface we are listening on.
@@ -335,11 +335,12 @@ flag_t comm_init(void) {
 	char pcap_errbuf[PCAP_ERRBUF_SIZE] = {0,};
 	struct bpf_program pcap_filter = {0,};
 	int pcap_dev = -1;
-	char *pcap_filter_str = "ip and udp";
+	char *pcap_filter_str;
 	int *datalinks = NULL;
 	int i;
 
 	netdevname = config_get_netdevicename();
+	pcap_filter_str = config_get_netdevicefilter();
 
 	console_log("comm: opening capture device %s, capture buffer size: %u\n", netdevname, BUFSIZ);
 

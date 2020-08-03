@@ -74,6 +74,7 @@ The file has the following configuration variables:
 - **ttyconsoleenabled**: Write 1 here to enable the serial console.
 - **ttyconsolebaudrate**: Baud rate to use on the serial console.
 - **netdevicename**: Interface for libpcap to listen on. Set it to **any**, this will make libpcap to listen on all passing traffic.
+- **netdevicefilter**: PCAP filter for selected interface (not applied to PCAP files). Use "ip and udp and host 192.168.1.123" to filter repeater IP, syntax is documented in pcap-filter manpage
 - **repeaterinfoupdateinsec**: Interval in seconds to update repeater info (ul/dl freqs, type, fw version etc.) using SNMP. Enter 0 here to disable this feature.
 - **repeaterinactivetimeoutinsec**: If no heartbeat is received within this period, the repeater will be considered offline.
 - **rssiupdateduringcallinmsec**: Period in msec to update repeater timeslot RSSI info using SNMP. Enter 0 here to disable this feature.

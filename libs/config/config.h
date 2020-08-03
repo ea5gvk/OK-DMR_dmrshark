@@ -41,6 +41,7 @@ char *config_get_ttyconsoledev(void);
 flag_t config_get_ttyconsoleenabled(void);
 int config_get_ttyconsolebaudrate(void);
 char *config_get_netdevicename(void);
+char *config_get_netdevicefilter(void);
 int config_get_repeaterinfoupdateinsec(void);
 int config_get_repeaterinactivetimeoutinsec(void);
 int config_get_rssiupdateduringcallinmsec(void);
